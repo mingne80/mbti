@@ -55,6 +55,12 @@ export async function selectResults() {
   return result.rows.map(rowToResult);
 }
 
+export async function deleteResultsByIds(ids: string[]) {
+  await ensureSchema();
+  const result = await getPool().query("DELETE FROM results WHERE id = ANY($1::text[]);", [ids]);
+  return result.rowCount ?? 0;
+}
+
 function rowToResult(row: {
   id: string;
   nickname: string;

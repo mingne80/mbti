@@ -14,6 +14,9 @@ export function PageShell({ children }: { children: React.ReactNode }) {
           <Link className="rounded-md px-3 py-2 text-ink hover:bg-white/70" href="/dashboard">
             대시보드
           </Link>
+          <Link className="rounded-md px-3 py-2 text-ink hover:bg-white/70" href="/admin">
+            관리자
+          </Link>
         </nav>
       </div>
       <div className="mx-auto max-w-6xl">{children}</div>

@@ -11,6 +11,16 @@ npm run dev
 
 로컬 기본값은 `NEXT_PUBLIC_STORAGE_MODE=local`입니다. 이 모드에서는 브라우저 `localStorage`가 테스트용 DB처럼 동작하므로 별도 DB가 필요 없습니다.
 
+## 관리자 페이지
+
+`/admin`에서 관리자 비밀번호를 입력하면 등록된 결과를 선택 삭제할 수 있습니다.
+
+배포 환경에서는 Vercel 환경변수에 아래 값을 등록하세요.
+
+```bash
+ADMIN_PASSWORD=rhksflwk01!
+```
+
 ## 무료 호스팅 + 중앙 DB 배포
 
 Vercel 무료 호스팅과 Neon, Supabase, Vercel Postgres 같은 무료 Postgres DB를 사용할 수 있습니다.
@@ -21,6 +31,7 @@ Vercel 무료 호스팅과 Neon, Supabase, Vercel Postgres 같은 무료 Postgre
 ```bash
 NEXT_PUBLIC_STORAGE_MODE=postgres
 DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/DB?sslmode=require
+ADMIN_PASSWORD=rhksflwk01!
 ```
 
 3. 배포하면 API 라우트가 `results` 테이블을 자동 생성합니다.
