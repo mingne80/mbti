@@ -91,6 +91,8 @@ export default function DashboardPage() {
       {stats ? (
         <div className="grid gap-4 md:grid-cols-2">
           <DonutChart
+            className="md:col-span-2"
+            totalLabel="총"
             title="16유형 분포"
             labels={allTypes}
             values={allTypes.map((type) => stats.byType[type])}
@@ -113,13 +115,12 @@ export default function DashboardPage() {
               "#588157"
             ]}
           />
-          <DonutChart title="E / I" labels={["외향 E", "내향 I"]} values={[stats.byAxis.EI.E, stats.byAxis.EI.I]} colors={["#2F6F73", "#D96C5F"]} />
-          <DonutChart title="S / N" labels={["감각 S", "직관 N"]} values={[stats.byAxis.SN.S, stats.byAxis.SN.N]} colors={["#D89B32", "#7B5EA7"]} />
-          <DonutChart title="T / F" labels={["사고 T", "감정 F"]} values={[stats.byAxis.TF.T, stats.byAxis.TF.F]} colors={["#496A81", "#C08497"]} />
-          <DonutChart title="J / P" labels={["판단 J", "인식 P"]} values={[stats.byAxis.JP.J, stats.byAxis.JP.P]} colors={["#5E8C61", "#B85C38"]} />
+          <DonutChart totalLabel="누적 점수" title="E / I 누적 점수" labels={["외향 E", "내향 I"]} values={[stats.byAxis.EI.E, stats.byAxis.EI.I]} colors={["#2F6F73", "#D96C5F"]} />
+          <DonutChart totalLabel="누적 점수" title="S / N 누적 점수" labels={["감각 S", "직관 N"]} values={[stats.byAxis.SN.S, stats.byAxis.SN.N]} colors={["#D89B32", "#7B5EA7"]} />
+          <DonutChart totalLabel="누적 점수" title="T / F 누적 점수" labels={["사고 T", "감정 F"]} values={[stats.byAxis.TF.T, stats.byAxis.TF.F]} colors={["#496A81", "#C08497"]} />
+          <DonutChart totalLabel="누적 점수" title="J / P 누적 점수" labels={["판단 J", "인식 P"]} values={[stats.byAxis.JP.J, stats.byAxis.JP.P]} colors={["#5E8C61", "#B85C38"]} />
         </div>
       ) : null}
     </PageShell>
   );
 }
-
