@@ -25,6 +25,7 @@ export type AccessLogPage = {
   page: number;
   pageSize: number;
   total: number;
+  anonymousTotal: number;
   totalPages: number;
 };
 
@@ -39,3 +40,4 @@ export type Stats = {
   byType: Record<MbtiType, number>;
   byAxis: AxisStats;
 };
+

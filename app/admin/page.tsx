@@ -205,6 +205,7 @@ export default function AdminPage() {
           <div>
             <h2 className="font-bold text-ink">페이지 접근 로그</h2>
             <p className="mt-1 text-sm text-slate-600">최근 접근 기록을 20건씩 확인합니다. 식별 정보는 닉네임, 접속 주소, 브라우저 정보 기준입니다.</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">전체 {accessLogPage?.total ?? 0}건 · 닉네임 없음 {accessLogPage?.anonymousTotal ?? 0}건</p>
           </div>
           <div className="flex items-center gap-2 text-sm text-slate-600">
             <button
@@ -264,3 +265,5 @@ export default function AdminPage() {
     </PageShell>
   );
 }
+
+

@@ -141,6 +141,7 @@ export async function listAccessLogs(input: { page: number; pageSize: number; pa
       page,
       pageSize,
       total: logs.length,
+      anonymousTotal: logs.filter((log) => !log.nickname).length,
       totalPages: Math.max(1, Math.ceil(logs.length / pageSize))
     };
   }
@@ -151,3 +152,4 @@ export async function listAccessLogs(input: { page: number; pageSize: number; pa
   if (!response.ok) throw new Error("message" in data && data.message ? data.message : "접근 로그를 불러오지 못했습니다.");
   return data as AccessLogPage;
 }
+

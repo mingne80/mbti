@@ -89,8 +89,9 @@ export async function selectAccessLogs(page: number, pageSize: number): Promise<
   const safePageSize = Math.min(50, Math.max(1, pageSize));
   const offset = (safePage - 1) * safePageSize;
 
-  const [countResult, rowsResult] = await Promise.all([
+  const [countResult, anonymousCountResult, rowsResult] = await Promise.all([
     getPool().query("SELECT COUNT(*)::int AS total FROM access_logs;"),
+    getPool().query("SELECT COUNT(*)::int AS total FROM access_logs WHERE nickname IS NULL OR nickname = '';"),
     getPool().query(
       `
         SELECT id::text, path, nickname, ip_address, user_agent, created_at
@@ -103,11 +104,13 @@ export async function selectAccessLogs(page: number, pageSize: number): Promise<
   ]);
 
   const total = countResult.rows[0]?.total ?? 0;
+  const anonymousTotal = anonymousCountResult.rows[0]?.total ?? 0;
   return {
     logs: rowsResult.rows.map(rowToAccessLog),
     page: safePage,
     pageSize: safePageSize,
     total,
+    anonymousTotal,
     totalPages: Math.max(1, Math.ceil(total / safePageSize))
   };
 }
