@@ -31,7 +31,7 @@ export default function HomePage() {
             닉네임으로 간단한 테스트를 진행하고, 유통/서비스실행그룹 전체의 MBTI 분포를 한 화면에서 확인합니다.
           </p>
           <div className="mt-6 inline-flex rounded-md border border-line bg-white/85 px-3 py-2 text-sm font-medium text-slate-700">
-            현재 저장 방식: {isLocalMode() ? "로컬 테스트용 localStorage" : "배포용 Postgres DB"}
+            현재 저장 방식: {isLocalMode() ? "현재 기기 임시 저장" : "공유 저장소"}
           </div>
         </div>
 
@@ -58,4 +58,5 @@ export default function HomePage() {
     </PageShell>
   );
 }
+
 

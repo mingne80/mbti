@@ -8,7 +8,7 @@ let pool: Pool | undefined;
 
 function getPool() {
   if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL 환경변수가 필요합니다.");
+    throw new Error("공유 저장소 연결 정보가 필요합니다.");
   }
 
   pool ??= new Pool({
@@ -76,3 +76,4 @@ function rowToResult(row: {
     createdAt: new Date(row.created_at).toISOString()
   };
 }
+

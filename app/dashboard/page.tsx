@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { RefreshCcw } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DonutChart } from "@/components/DonutChart";
 import { PageShell } from "@/components/PageShell";
@@ -43,7 +44,7 @@ export default function DashboardPage() {
         <div>
           <h1 className="text-2xl font-black text-ink">유통/서비스실행그룹 MBTI 대시보드</h1>
           <p className="mt-1 text-sm text-slate-600">
-            {isLocalMode() ? "현재 브라우저 localStorage 기준" : "Postgres 중앙 DB 기준"} · 총 {results.length}명
+            {isLocalMode() ? "현재 기기 임시 저장 기준" : "공유 저장소 기준"} · 총 {results.length}명
           </p>
         </div>
         <PrimaryButton onClick={load} className="gap-2">
@@ -81,7 +82,11 @@ export default function DashboardPage() {
                     <td className="px-4 py-3">
                       <span className="rounded-md bg-brand/10 px-2 py-1 font-bold text-brand">{result.mbti}</span>
                     </td>
-                    <td className="px-4 py-3 text-slate-700">{mbtiProfiles[result.mbti].nickname}</td>
+                    <td className="px-4 py-3">
+                      <Link className="font-semibold text-brand underline-offset-4 hover:underline" href={`/types/${result.mbti}`}>
+                        {mbtiProfiles[result.mbti].nickname}
+                      </Link>
+                    </td>
                     <td className="px-4 py-3 text-slate-600">{new Date(result.createdAt).toLocaleString("ko-KR")}</td>
                   </tr>
                 ))

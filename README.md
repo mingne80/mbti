@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-로컬 기본값은 `NEXT_PUBLIC_STORAGE_MODE=local`입니다. 이 모드에서는 브라우저 `localStorage`가 테스트용 DB처럼 동작하므로 별도 DB가 필요 없습니다.
+로컬 기본값은 `NEXT_PUBLIC_STORAGE_MODE=local`입니다. 이 모드에서는 결과가 현재 기기에만 임시 저장되므로 별도 가입이나 저장소 설정이 필요 없습니다.
 
 ## 관리자 페이지
 
@@ -21,19 +21,19 @@ npm run dev
 ADMIN_PASSWORD=rhksflwk01!
 ```
 
-## 무료 호스팅 + 중앙 DB 배포
+## 무료 호스팅 + 공유 저장소 배포
 
-Vercel 무료 호스팅과 Neon, Supabase, Vercel Postgres 같은 무료 Postgres DB를 사용할 수 있습니다.
+Vercel 무료 호스팅과 무료 공유 저장소를 함께 사용할 수 있습니다.
 
-1. 무료 Postgres 프로젝트를 만들고 접속 문자열을 발급합니다.
+1. 무료 공유 저장소 프로젝트를 만들고 접속 문자열을 발급합니다.
 2. Vercel 프로젝트 환경변수에 아래 값을 등록합니다.
 
 ```bash
 NEXT_PUBLIC_STORAGE_MODE=postgres
-DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/DB?sslmode=require
+DATABASE_URL=발급받은_접속_문자열
 ADMIN_PASSWORD=rhksflwk01!
 ```
 
-3. 배포하면 API 라우트가 `results` 테이블을 자동 생성합니다.
+3. 배포하면 결과 저장 공간이 자동으로 준비됩니다.
 
-닉네임은 `UNIQUE`로 처리됩니다. 같은 닉네임이 다시 제출되면 기존 결과를 새 결과로 갱신합니다.
+닉네임은 중복을 막도록 처리됩니다. 같은 닉네임이 다시 제출되면 기존 결과를 새 결과로 갱신합니다.
