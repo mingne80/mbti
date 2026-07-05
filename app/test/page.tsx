@@ -51,7 +51,9 @@ export default function TestPage() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-2xl font-black text-ink">{nickname}님의 테스트</h1>
-            <p className="mt-1 text-sm text-slate-600">{answeredCount}/{questions.length}개 문항 완료</p>
+            <p className="mt-1 text-sm text-slate-600">
+              {answeredCount}/{questions.length}개 문항 완료
+            </p>
           </div>
           <PrimaryButton onClick={submit} disabled={!canSubmit} className="gap-2">
             <CheckCircle2 size={18} /> 결과 보기
@@ -95,6 +97,15 @@ export default function TestPage() {
             </div>
           </section>
         ))}
+      </div>
+
+      <div className="mt-5 rounded-lg border border-line bg-white p-4 text-center shadow-sm">
+        <p className="mb-3 text-sm text-slate-600">
+          {answeredCount}/{questions.length}개 문항 완료
+        </p>
+        <PrimaryButton onClick={submit} disabled={!canSubmit} className="w-full gap-2 sm:w-auto">
+          <CheckCircle2 size={18} /> 결과 보기
+        </PrimaryButton>
       </div>
     </PageShell>
   );
