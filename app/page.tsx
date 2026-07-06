@@ -1,6 +1,7 @@
 ﻿"use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BarChart3, UsersRound } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { PageShell } from "@/components/PageShell";
@@ -23,7 +24,7 @@ export default function HomePage() {
 
   return (
     <PageShell>
-      <section className="grid min-h-[calc(100vh-112px)] items-center gap-8 pb-12 lg:grid-cols-[1fr_420px]">
+      <section className="grid min-h-[calc(100vh-112px)] items-center gap-8 pb-12 lg:grid-cols-[1fr_440px]">
         <div className="max-w-3xl">
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-brand">Distribution/service execution group dashboard</p>
           <h1 className="text-5xl font-black leading-tight text-ink sm:text-6xl">유통/서비스실행그룹 MBTI 테스트</h1>
@@ -35,28 +36,52 @@ export default function HomePage() {
           </div>
         </div>
 
-        <form onSubmit={start} className="rounded-lg border border-line bg-white p-6 shadow-lg">
-          <label className="block text-sm font-bold text-ink" htmlFor="nickname">
-            닉네임
-          </label>
-          <input
-            id="nickname"
-            value={nickname}
-            onChange={(event) => setNickname(event.target.value)}
-            className="mt-2 h-12 w-full rounded-md border border-line px-4 outline-none ring-brand/30 transition focus:ring-4"
-            maxLength={24}
-            placeholder="예: 민지"
-          />
-          <p className="mt-3 text-sm leading-6 text-slate-600">
-            같은 닉네임으로 다시 제출하면 기존 결과가 새 결과로 갱신됩니다.
-          </p>
-          <PrimaryButton className="mt-5 w-full gap-2" disabled={!nickname.trim()}>
-            테스트 시작 <ArrowRight size={18} />
-          </PrimaryButton>
-        </form>
+        <div className="grid gap-4">
+          <form onSubmit={start} className="rounded-lg border border-line bg-white p-6 shadow-lg">
+            <label className="block text-sm font-bold text-ink" htmlFor="nickname">
+              닉네임
+            </label>
+            <input
+              id="nickname"
+              value={nickname}
+              onChange={(event) => setNickname(event.target.value)}
+              className="mt-2 h-12 w-full rounded-md border border-line px-4 outline-none ring-brand/30 transition focus:ring-4"
+              maxLength={24}
+              placeholder="예: 민지"
+            />
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              같은 닉네임으로 다시 제출하면 기존 결과가 새 결과로 갱신됩니다.
+            </p>
+            <PrimaryButton className="mt-5 w-full gap-2" disabled={!nickname.trim()}>
+              테스트 시작 <ArrowRight size={18} />
+            </PrimaryButton>
+          </form>
+
+          <section className="overflow-hidden rounded-lg border border-brand/30 bg-white shadow-lg">
+            <div className="flex items-start gap-4 bg-brand px-5 py-4 text-white">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-white/18">
+                <BarChart3 size={24} />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white/80">이미 테스트한 구성원이 있다면</p>
+                <h2 className="mt-1 text-xl font-black">부서원 MBTI 현황 보기</h2>
+              </div>
+            </div>
+            <div className="p-5">
+              <div className="flex items-start gap-3 rounded-md bg-panel px-3 py-3 text-sm leading-6 text-slate-700">
+                <UsersRound className="mt-0.5 shrink-0 text-brand" size={18} />
+                <p>구성원 목록, 16유형 분포, E/I·S/N·T/F·J/P 경향성을 바로 확인할 수 있습니다.</p>
+              </div>
+              <Link
+                href="/dashboard"
+                className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-coral px-5 py-3 font-black text-white shadow-sm transition hover:bg-[#BF554A]"
+              >
+                대시보드 바로가기 <ArrowRight size={18} />
+              </Link>
+            </div>
+          </section>
+        </div>
       </section>
     </PageShell>
   );
 }
-
-
