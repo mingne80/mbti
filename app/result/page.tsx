@@ -4,6 +4,7 @@ import { BarChart3, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { MbtiLifeDetails } from "@/components/MbtiLifeDetails";
 import { PageShell } from "@/components/PageShell";
 import { PrimaryButton } from "@/components/PrimaryButton";
 import { saveResult } from "@/lib/clientStore";
@@ -64,6 +65,7 @@ export default function ResultPage() {
             <p className="text-sm font-bold text-brand">{profile.shortDescription}</p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-ink">{profile.nickname}</h2>
             <p className="mt-5 rounded-md bg-panel px-4 py-4 text-left text-base leading-8 text-slate-700">{profile.longDescription}</p>
+            <MbtiLifeDetails type={result.mbti} />
             <p className="mt-4 rounded-md border border-line px-4 py-3 text-sm text-slate-600">{status}</p>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">

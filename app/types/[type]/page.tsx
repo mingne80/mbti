@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MbtiLifeDetails } from "@/components/MbtiLifeDetails";
 import { PageShell } from "@/components/PageShell";
 import { PrimaryButton } from "@/components/PrimaryButton";
 import { mbtiProfiles } from "@/lib/mbtiProfiles";
@@ -52,6 +53,7 @@ export default async function MbtiTypePage({ params }: Props) {
             <p className="text-sm font-bold text-brand">{profile.shortDescription}</p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-ink">{profile.nickname}</h2>
             <p className="mt-5 rounded-md bg-panel px-4 py-4 text-base leading-8 text-slate-700">{profile.longDescription}</p>
+            <MbtiLifeDetails type={mbti} />
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/dashboard">
                 <PrimaryButton>대시보드로 돌아가기</PrimaryButton>
